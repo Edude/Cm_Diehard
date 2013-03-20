@@ -196,7 +196,7 @@ class Cm_Diehard_Helper_Data extends Mage_Core_Helper_Abstract
         } else {
           $ignoredBlocks = '-';
         }
-        Mage::getSingleton('core/cookie')->set(self::COOKIE_IGNORED_BLOCKS, $ignoredBlocks);
+        Mage::getSingleton('core/cookie')->set(self::COOKIE_IGNORED_BLOCKS, $ignoredBlocks, null, null, null, null, false);
     }
 
     /**

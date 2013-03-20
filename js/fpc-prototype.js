@@ -25,6 +25,7 @@ Diehard.prototype =
     loadDynamicContent: function() {
         // Remove ignored blocks
         var ignored = Mage.Cookies.get('diehard_ignored');
+        console.debug(ignored);
         if (ignored === null) { // No cookie means user has only hit cached pages thus far
           ignored = this.defaultIgnored; // Use all default ignored blocks as ignored blocks
         } else if (ignored == '-') { // '-' is a sentinel value for no blocks
