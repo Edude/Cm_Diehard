@@ -61,7 +61,7 @@ abstract class Cm_Diehard_Model_Backend_Abstract
     public function getCacheKey()
     {
         if( ! self::$_cacheKey) {
-            self::$_cacheKey = strtoupper(implode('_', array(
+            self::$_cacheKey = str_replace('/', '_', strtoupper(implode('_', array(
                 'DIEHARD',
                 $this->_name,
                 // Mage::app()->getStore()->getId(), // Can't be used before init
@@ -70,7 +70,7 @@ abstract class Cm_Diehard_Model_Backend_Abstract
                 Mage::app()->getRequest()->getRequestUri(),
                 Mage::app()->getRequest()->getCookie(Cm_Diehard_Helper_Data::COOKIE_CACHE_KEY_DATA, '')
                 // Design?
-            )));
+            ))));
         }
         return self::$_cacheKey;
     }
