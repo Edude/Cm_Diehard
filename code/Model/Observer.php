@@ -105,6 +105,32 @@ class Cm_Diehard_Model_Observer
     }
 
     /**
+     * Observe flush cache action in adminhtml
+     *
+     * @param Varien_Event_Observer $observer
+     * @return void
+     */
+    public function applicationFlushCache(Varien_Event_Observer $observer)
+    {
+        if($this->helper()->isEnabled()) {
+            $this->helper()->flush();
+        }
+    }
+
+    /**
+     * Observe flush cache type action in adminhtml
+     *
+     * @param Varien_Event_Observer $observer
+     * @return void
+     */
+    public function applicationFlushCacheType(Varien_Event_Observer $observer)
+    {
+        if($this->helper()->isEnabled() && $observer->getData('type') == 'diehard') {
+            $this->helper()->flush();
+        }
+    }
+
+    /**
      * Observe all models so that a cached page can be associated with all model instances
      * loaded in the course of page rendering.
      *

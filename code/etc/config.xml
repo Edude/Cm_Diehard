@@ -43,6 +43,24 @@
                     </diehard>
                 </observers>
             </application_clean_cache>
+            <adminhtml_cache_refresh_type>
+                <observers>
+                    <diehard>
+                        <type>singleton</type>
+                        <class>diehard/observer</class>
+                        <method>applicationFlushCacheType</method>
+                    </diehard>
+                </observers>
+            </adminhtml_cache_refresh_type>
+            <adminhtml_cache_flush_all>
+                <observers>
+                    <diehard>
+                        <type>singleton</type>
+                        <class>diehard/observer</class>
+                        <method>applicationFlushCache</method>
+                    </diehard>
+                </observers>
+            </adminhtml_cache_flush_all>
         </events>
         <diehard>
 
