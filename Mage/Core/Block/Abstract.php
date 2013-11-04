@@ -1394,14 +1394,6 @@ abstract class Mage_Core_Block_Abstract extends Varien_Object
      */
     protected function _saveCache($data)
     {
-        /* START: Changed by Cm_Diehard */
-        // Add block cache tags to diehard tags
-        $tags = $this->getCacheTags();
-        if(Mage::helper('diehard')->getLifetime()) {
-            Mage::helper('diehard')->addTags($tags);
-        }
-        /* END: Changed by Cm_Diehard */
-
         if (is_null($this->getCacheLifetime()) || !Mage::app()->useCache(self::CACHE_GROUP)) {
             return false;
         }
@@ -1415,6 +1407,13 @@ abstract class Mage_Core_Block_Abstract extends Varien_Object
         );
 
         $tags = $this->getCacheTags();
+
+        /* START: Changed by Cm_Diehard */
+        // Add block cache tags to diehard tags
+        if(Mage::helper('diehard')->getLifetime()) {
+            Mage::helper('diehard')->addTags($tags);
+        }
+        /* END: Changed by Cm_Diehard */
 
         Mage::app()->saveCache($data, $cacheKey, $tags, $this->getCacheLifetime());
         Mage::app()->saveCache(
